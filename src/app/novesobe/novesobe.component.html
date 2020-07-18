@@ -1,0 +1,34 @@
+<h2>Dodavanje sobe iz druge komponente</h2>
+
+            <form>
+                    <div class="form-group">
+                        <label for="imeSobe">Ime sobe</label>
+                        <input type="text" class="form-control" [(ngModel)]="ime" ngModel name="imeSobe" #imeSobe="ngModel" minlength="6" required>
+                        <div 
+                            class="alert alert-danger" 
+                            *ngIf="imeSobe.touched && !imeSobe.valid ">
+                                <div *ngIf="imeSobe.errors.required">
+                                    Unesite ime sobe
+                                </div>  
+                                <div *ngIf="imeSobe.errors.minlength">
+                                    Ime sobe mora biti duza od 6 karaktera.
+                                </div>        
+                      </div>
+                     
+                    </div>
+                
+                    <div class="form-group">
+                        <label for="cenaSobe">Cena sobe</label>
+                        <input type="text" class="form-control" [(ngModel)]="cena" ngModel name="cenaSobe" #cenaSobe="ngModel" id="cenaSobe" required>
+                    
+                        <div 
+                        class="alert alert-danger" 
+                        *ngIf="cenaSobe.touched && !cenaSobe.valid">
+                            <div *ngIf="cenaSobe.errors.required">
+                                Unesite cenu sobe
+                            </div>
+                        </div>
+                    </div>
+                
+                    <button type="submit" class="btn btn-success" (click)="add(imeSobe.value,cenaSobe.value)">Dodaj</button>
+            </form>
